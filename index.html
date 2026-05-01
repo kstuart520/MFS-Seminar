@@ -756,8 +756,14 @@
       Thank you for registering for the MFS BJJ Seminar.<br>
       We'll see you on <strong style="color:var(--teal-light)">May 16, 2026 at 2:00 PM</strong>!<br><br>
       <strong style="color:var(--gold)">214 E Court St · Seguin, TX 78155</strong><br>
-      <span style="font-size:13px;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f29f9d9c86939c93949b959a869b9c95818b8186979f81b2959f939b9edc919d9f">[email&#160;protected]</a> · (830) 556-7510</span>
+      <span style="font-size:13px;">(830) 556-7510</span>
     </p>
+    <div style="margin-top:28px;">
+      <p style="color:var(--text-muted);font-size:13px;margin-bottom:16px;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;text-transform:uppercase;">Registering someone else?</p>
+      <button onclick="resetForm()" style="background:transparent;border:2px solid var(--teal);color:var(--teal-light);font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;padding:14px 32px;cursor:pointer;transition:all 0.2s;width:100%;max-width:320px;">
+        REGISTER ANOTHER PERSON
+      </button>
+    </div>
   </div>
 
   <div class="footer-brand">
@@ -767,6 +773,29 @@
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function resetForm() {
+    // Reset the form fields
+    document.getElementById('seminarForm').reset();
+    // Clear all selected radio/checkbox highlights
+    document.querySelectorAll('.radio-option, .check-option').forEach(o => o.classList.remove('selected'));
+    // Hide minor section
+    document.getElementById('minorSection').style.display = 'none';
+    // Reset waiver date to today
+    const today = new Date().toISOString().split('T')[0];
+    document.querySelector('[name="waiverDate"]').value = today;
+    // Re-enable submit button
+    const submitBtn = document.querySelector('.submit-btn');
+    submitBtn.textContent = 'CONFIRM MY SPOT';
+    submitBtn.disabled = false;
+    // Show form and price banner again
+    document.getElementById('seminarForm').style.display = 'block';
+    document.querySelector('.price-banner').style.display = 'block';
+    // Hide success screen
+    document.getElementById('successScreen').classList.remove('show');
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   function toggleMinor(val) {
     const section = document.getElementById('minorSection');
     if (val === 'Under 18') {
