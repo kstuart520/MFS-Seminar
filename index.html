@@ -544,7 +544,7 @@
     <div class="raffle-note"> Every entry = raffle ticket · Bring a friend = extra entry</div>
   </div>
 
-  <form id="seminarForm" novalidate>
+  <form id="seminarForm" novalidate onsubmit="return false;">
 
     <!-- Section 1: Personal Info -->
     <div class="form-section">
@@ -910,3 +910,13 @@
       document.getElementById('successScreen').classList.add('show');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     })
+    .catch(() => {
+      submitBtn.textContent = 'CONFIRM MY SPOT';
+      submitBtn.disabled = false;
+      alert('Something went wrong. Please try again or contact montanafightingsystems@gmail.com');
+    });
+  });
+</script>
+
+</body>
+</html>
